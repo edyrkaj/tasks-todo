@@ -83,7 +83,7 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArr
 	$scope.clearCompletedTodos = function () {
 		$scope.todos.forEach(function (todo) {
 			if (todo.completed) {
-				$scope.removeTodo(todo);
+				//$scope.removeTodo(todo);
 			}
 		});
 	};
