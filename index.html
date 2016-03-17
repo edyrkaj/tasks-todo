@@ -22,7 +22,10 @@
 					<li ng-repeat="(id, todo) in todos | todoFilter" ng-class="{completed: todo.completed, editing: todo == editedTodo}">
 						<div class="view">
 							<input class="toggle" type="checkbox" ng-model="todo.completed" ng-change="todos.$save(todo)">
-							<label ng-dblclick="editTodo(todo)">{{todo.title}}</label>
+							<label ng-dblclick="editTodo(todo)">
+								<span class="task-date">{{todo.date}}</span>
+								<span class="task-title">{{todo.title}}</span>
+							</label>
 							<button class="destroy" ng-click="removeTodo(todo)"></button>
 						</div>
 						<form ng-submit="doneEditing(todo)">
@@ -59,6 +62,7 @@
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angularfire/dist/angularfire.js"></script>
+		<script src="public/lib/moment/moment.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/controllers/todoCtrl.js"></script>
 		<script src="js/directives/todoFocus.js"></script>

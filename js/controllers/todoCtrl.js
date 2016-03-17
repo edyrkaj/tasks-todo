@@ -13,6 +13,7 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArr
 
 	// Bind the todos to the firebase provider.
 	$scope.todos = $firebaseArray(fireRef);
+
 	$scope.newTodo = '';
 	$scope.editedTodo = null;
 
@@ -30,6 +31,7 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArr
 				remaining++;
 			}
 		});
+
 		$scope.totalCount = total;
 		$scope.remainingCount = remaining;
 		$scope.completedCount = total - remaining;
@@ -41,11 +43,16 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArr
 		if (!newTodo.length) {
 			return;
 		}
+
+		var current_time = moment().format('DD/MM/YYYY HH:mm:ss');
+
 		$scope.todos.$add({
 			title: newTodo,
 			completed: false,
-			date: new Date()
+			date: current_time,
+			field: 'custom'
 		});
+
 		$scope.newTodo = '';
 	};
 
